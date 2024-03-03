@@ -12,7 +12,7 @@ namespace Algorithms.Sorting
             // If no elements are swapped, the list is considered sorted, and the loop can terminate.
             bool swapped;
 
-            int n = sortedList.Count;
+            var n = sortedList.Count;
 
             do
             {
@@ -20,7 +20,7 @@ namespace Algorithms.Sorting
                 swapped = false;
 
                 // Iterate over the list, stopping one short of the last element to avoid index out of range errors.
-                for (int i = 0; i < n - 1; i++)
+                for (var i = 0; i < n - 1; i++)
                 {
                     // Use CompareTo to compare adjacent elements. If the current element is greater than the next, they are out of order, and a swap is needed.
                     if (sortedList[i].CompareTo(sortedList[i + 1]) > 0)
