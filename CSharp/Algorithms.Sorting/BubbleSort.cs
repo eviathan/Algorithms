@@ -7,17 +7,20 @@ namespace Algorithms.Sorting
         {
             // Create a copy of the origional list.
             var sortedList = new List<T>(list);
-            
+
             // This flag will keep track of whether any elements were swapped in the last pass.
             // If no elements are swapped, the list is considered sorted, and the loop can terminate.
             bool swapped;
+
+            int n = sortedList.Count;
+
             do
             {
                 // Initially assume no swaps will be made during this pass.
                 swapped = false;
-                
+
                 // Iterate over the list, stopping one short of the last element to avoid index out of range errors.
-                for (int i = 0; i < sortedList.Count - 1; i++)
+                for (int i = 0; i < n - 1; i++)
                 {
                     // Use CompareTo to compare adjacent elements. If the current element is greater than the next, they are out of order, and a swap is needed.
                     if (sortedList[i].CompareTo(sortedList[i + 1]) > 0)
@@ -29,8 +32,12 @@ namespace Algorithms.Sorting
                         swapped = true;
                     }
                 }
-            // Continue looping until a pass is made with no swaps, indicating the list is sorted.
-            } while (swapped);
+
+                // After each pass, reduce the range of the inner loop, since the last element is already sorted.
+                n--;
+            }
+            // Continue looping until a pass is made with no swaps, indicating the list is sorted. 
+            while (swapped);
             
             return sortedList;
         }
