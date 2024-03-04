@@ -18,4 +18,18 @@ public class SortingTests
         // Assert
         Assert.Equal(expected, sortedList);
     }
+
+    [Fact]
+    public void InsertionSort()
+    {
+        // Arrange
+        List<int> list = [ 5, 3, 8, 1, 2 ];
+        List<int> expected = [ 1, 2, 3, 5, 8 ];
+
+        // Act
+        var sortedList = list.InsertionSort();
+
+        // Assert
+        Assert.Equal(expected, sortedList);
+    }
 }
