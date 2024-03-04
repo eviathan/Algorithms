@@ -12,7 +12,10 @@ namespace Algorithms.Sorting
             // If no elements are swapped, the list is considered sorted, and the loop can terminate.
             bool swapped;
 
-            var n = sortedList.Count;
+            // Marks the end of the unsorted section of the list. With each iteration, this boundary is 
+            // reduced by 1 as the largest elements are bubbled to their sorted position at the end of the list,
+            // thereby reducing the number of comparisons in subsequent passes.
+            var unsortedBoundary = sortedList.Count;
 
             do
             {
@@ -20,7 +23,7 @@ namespace Algorithms.Sorting
                 swapped = false;
 
                 // Iterate over the list, stopping one short of the last element to avoid index out of range errors.
-                for (var i = 0; i < n - 1; i++)
+                for (var i = 0; i < unsortedBoundary - 1; i++)
                 {
                     // Use CompareTo to compare adjacent elements. If the current element is greater than the next, they are out of order, and a swap is needed.
                     if (sortedList[i].CompareTo(sortedList[i + 1]) > 0)
@@ -34,7 +37,7 @@ namespace Algorithms.Sorting
                 }
 
                 // After each pass, reduce the range of the inner loop, since the last element is already sorted.
-                n--;
+                unsortedBoundary--;
             }
             // Continue looping until a pass is made with no swaps, indicating the list is sorted. 
             while (swapped);
